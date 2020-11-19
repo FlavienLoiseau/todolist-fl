@@ -7,13 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-3.times do
-  my_category = Category.create(title: Faker::Book.genre)
-  3.times do
-    my_task = Task.new(title: Faker::Book.title,
-                      deadline: Faker::Date.forward(23),
-                      image: Faker::Avatar.image)
-    my_task.category = my_category
-    my_task.save
-  end
+
+# 3.times do
+#   my_category = Category.create(title: Faker::Book.genre)
+#   3.times do
+#     my_task = Task.new(title: Faker::Book.title,
+#                       deadline: Faker::Date.forward(23),
+#                       image: Faker::Avatar.image)
+#     my_task.category = my_category
+#     my_task.save
+#   end
+# end
+
+# Emails
+Email.destroy_all
+6.times do
+  Email.create(object: Faker::Lorem.sentence(word_count: 4), body: Faker::Lorem.paragraph(sentence_count: 4))
 end
+tp Email.all
