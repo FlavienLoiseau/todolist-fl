@@ -1,0 +1,12 @@
+<div class="d-flex flex-column">
+  <td class="d-flex flex-column" id="full_display">
+    <div>
+      <p><u><%= @email.object %></u></p>
+      <p><%= @email.body %></p>
+      <div class="align-self-end">
+        <%= link_to "Supprimer", email_path(@email), method: :delete, remote: true, :class => "btn btn-sm btn-outline-danger m-2" %>
+        <%= link_to "Marquer comme non-lu", new_email_path, remote: true, :class => "btn btn-sm btn-outline-info m-2" %>
+      </div>
+    </div>
+  </td>
+</div>

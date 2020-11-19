@@ -1,0 +1,3 @@
+document.getElementById("full_display").firstElementChild.remove();
+
+document.getElementById("full_display").insertAdjacentHTML("beforeend", "<%= j render 'show', email: @email %>");

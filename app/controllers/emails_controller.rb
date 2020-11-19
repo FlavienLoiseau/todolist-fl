@@ -1,6 +1,7 @@
 class EmailsController < ApplicationController
   def index
     @emails = Email.all
+    @email = Email.first
   end
 
   def create
@@ -17,16 +18,27 @@ class EmailsController < ApplicationController
     end
   end
 
+  def show
+    @email = Email.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { }
+    end
+  end
+
   def destroy
     @email = Email.find(params[:id])
-    if @email.destroy
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.js { }
-      end
-    else
-      redirect_to root_path
-      flash[:notice] = "Please try again"
+    @email.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { }
     end
+  end
+
+  private
+
+  def email_params
+    params.permit(:objet, :body)
+    
   end
 end
